@@ -1,0 +1,79 @@
+﻿- [x] Lifetime of Local Objects
+- [x] implicit conversion & copy initialization
+- [ ] RAII Wrapper Over a Resource
+- [ ] Rule of Zero & Rule of Five
+- [ ] Object Ownership
+- [ ] Lifetime Errors
+- [ ] Iterator Invalidation
+- [ ] Passing Parameters
+- [ ] Const Correctness
+- [ ] optional, variant, expected
+- [ ] Type-Safe Identifiers
+- [ ] enum class & flags
+- [ ] Lambda Captures
+- [ ] Perfect Forwarding
+- [ ] Constrained Templates
+- [ ] Custom Dynamic Array
+- [ ] Generational H&les
+- [ ] Object Pool
+- [ ] LRU Cache
+- [ ] Spatial Grid
+- [ ] CMake Project
+- [ ] Static & Dynamic Libraries
+- [ ] Linker Errors
+- [ ] Include Hygiene
+- [ ] Compiling with Two Compilers
+- [ ] CI
+- [ ] Debugger
+- [ ] Crash Dump
+- [ ] Sanitizers
+- [ ] Static Analysis
+- [ ] Logging
+- [ ] Unit Tests
+- [ ] Parameterized Tests
+- [ ] Regression Test
+- [ ] Fault Injection
+- [ ] Stress Test
+- [ ] Fuzz-Like Test
+- [ ] Correct Benchmark
+- [ ] AoS vs. SoA
+- [ ] Cache Locality
+- [ ] Cost of Allocations
+- [ ] Padding & Alignment
+- [ ] False Sharing
+- [ ] Branch Prediction
+- [ ] Reading Assembly
+- [ ] SIMD
+- [ ] Safe Counter
+- [ ] Producer–Consumer Queue
+- [ ] Deadlock
+- [ ] Data Race
+- [ ] Thread Pool
+- [ ] Job Dependencies
+- [ ] Cancellation
+- [ ] Parallel Entity Update
+- [ ] Resource Manager
+- [ ] Loading Stages
+- [ ] Memory Limits
+- [ ] Quality Tools
+- [ ] UE C++ Module
+- [ ] Actor & Component Lifecycle
+- [ ] UObject & GC
+- [ ] Unreal Smart Pointers
+- [ ] UE Containers
+- [ ] Delegates
+- [ ] Subsystem
+- [ ] Async in UE
+- [ ] Unreal Automation Tests
+- [ ] Packaged Build
+- [ ] Game Thread & Render Thread
+- [ ] Render Resource
+- [ ] Global Shader
+- [ ] Compute Shader
+- [ ] RDG Pass
+- [ ] Fullscreen Pass
+- [ ] Scene View Extension
+- [ ] CPU/GPU Profiling
+- [ ] Optimization Pass
+- [ ] UE Rendering Plugin
+- [ ] Optimization Case Study
