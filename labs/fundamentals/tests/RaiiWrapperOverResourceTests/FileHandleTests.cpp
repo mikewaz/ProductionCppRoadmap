@@ -38,3 +38,24 @@ TEST(FileHandleTest, ThrowsWhenFileCannotBeOpened)
             std::runtime_error
     );
 }
+
+TEST(FileHandleTest, MoveConstructorTransfersOwnership)
+{
+    const auto path =  std::filesystem::current_path() / "file_handle_open_test.txt";
+
+    {
+        FileHandle source{path.string(), "rb"};
+        std::FILE* original_pointer = source.Get();
+
+        EXPECT_TRUE(source.IsOpen());
+        EXPECT_NE(source.Get(), nullptr);
+
+        FileHandle destination{std::move(source)};
+
+        EXPECT_FALSE(source.IsOpen());
+        EXPECT_EQ(source.Get(), nullptr);
+
+        EXPECT_TRUE(destination.IsOpen());
+        EXPECT_EQ(destination.Get(), original_pointer);
+    } // FileHandle::~FileHandle()
+}
