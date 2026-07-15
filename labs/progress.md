@@ -1,6 +1,6 @@
 ﻿- [x] Lifetime of Local Objects
 - [x] implicit conversion & copy initialization
-- [ ] RAII Wrapper Over a Resource
+- [x] RAII Wrapper Over a Resource
 - [ ] Rule of Zero & Rule of Five
 - [ ] Object Ownership
 - [ ] Lifetime Errors
