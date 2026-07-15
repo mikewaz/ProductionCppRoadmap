@@ -15,7 +15,7 @@ public:
         const char* mode
     );
 
-    ~FileHandle();
+    ~FileHandle() noexcept;
 
     FileHandle(const FileHandle&) = delete;
     FileHandle(FileHandle&& other) noexcept;

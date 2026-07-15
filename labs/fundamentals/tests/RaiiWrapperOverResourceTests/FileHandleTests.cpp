@@ -83,5 +83,5 @@ TEST(FileHandleTest, MoveAssignmentTransfersOwnership)
     std::error_code error;
     std::filesystem::remove(destination_path, error);
 
-    EXPECT_FALSE(error.value());
+    EXPECT_FALSE(error);
 }

@@ -17,7 +17,7 @@ FileHandle::FileHandle(
 }
 
 
-FileHandle::~FileHandle() {
+FileHandle::~FileHandle() noexcept {
     Close();
 }
 
