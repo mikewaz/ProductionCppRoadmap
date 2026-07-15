@@ -28,3 +28,13 @@ TEST(FileHandleTest, OpensFile)
         EXPECT_NE(file.Get(), nullptr);
     } // FileHandle::~FileHandle()
 }
+
+TEST(FileHandleTest, ThrowsWhenFileCannotBeOpened)
+{
+    const auto path = std::filesystem::temp_directory_path() / "directory_that_does_not_exist" / "file.txt";
+
+    EXPECT_THROW(
+            FileHandle(path.string(), "rb"),
+            std::runtime_error
+    );
+}
