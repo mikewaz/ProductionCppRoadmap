@@ -41,7 +41,7 @@ TEST(FileHandleTest, ThrowsWhenFileCannotBeOpened)
 
 TEST(FileHandleTest, MoveConstructorTransfersOwnership)
 {
-    const auto path =  std::filesystem::current_path() / "file_handle_open_test.txt";
+    const auto path = std::filesystem::current_path() / "file_handle_open_test.txt";
 
     {
         FileHandle source{path.string(), "rb"};
@@ -62,8 +62,8 @@ TEST(FileHandleTest, MoveConstructorTransfersOwnership)
 
 TEST(FileHandleTest, MoveAssignmentTransfersOwnership)
 {
-    const auto source_path =  std::filesystem::current_path() / "file_handle_open_test.txt";
-    const auto destination_path = std::filesystem::current_path() / "file_handle_destination.txt";
+    const auto source_path= std::filesystem::current_path() / "file_handle_open_test.txt";
+    const auto destination_path= std::filesystem::current_path() / "file_handle_destination.txt";
 
     {
         FileHandle source{source_path.string(), "rb"};
