@@ -7,12 +7,12 @@
 
 namespace GameObject = production_cpp::object_ownership;
 
-TEST(GameObject, ParentOwnsAddedChild){
+TEST(GameObject, ParentOwnsAddedChild) {
     GameObject::GameObject root{"root"};
 
     auto child = std::make_unique<GameObject::GameObject>("child");
     auto child_address = child.get();
-    GameObject::GameObject& added_child = root.AddChild(std::move(child));
+    GameObject::GameObject &added_child = root.AddChild(std::move(child));
 
     EXPECT_EQ(child, nullptr);
 
@@ -23,26 +23,30 @@ TEST(GameObject, ParentOwnsAddedChild){
     EXPECT_EQ(added_child.Parent(), &root);
 }
 
-TEST(ObjectOwnershipTest, BuildsObjectHierarchy)
-{
+TEST(ObjectOwnershipTest, BuildsObjectHierarchy) {
     GameObject::GameObject root{"Root"};
 
-    GameObject::GameObject& player = root.AddChild(
+    GameObject::GameObject &player = root.AddChild(
             std::make_unique<GameObject::GameObject>("Player")
     );
 
-    GameObject::GameObject& weapon = player.AddChild(
+    GameObject::GameObject &weapon = player.AddChild(
             std::make_unique<GameObject::GameObject>("Weapon")
     );
 
-    EXPECT_EQ(root.ChildCount(), 1u);
-    EXPECT_EQ(player.ChildCount(), 1u);
+    EXPECT_EQ(root.ChildCount(), 1);
+    EXPECT_EQ(player.ChildCount(), 1);
 
     EXPECT_EQ(player.Parent(), &root);
     EXPECT_EQ(weapon.Parent(), &player);
 
-    EXPECT_EQ(
-            root.ChildAt(0).ChildAt(0).Name(),
-            "Weapon"
-    );
+    EXPECT_EQ(root.ChildAt(0).ChildAt(0).Name(), "Weapon");
+}
+
+TEST(ObjectOwnershipTest, RejectsNullChild) {
+    GameObject::GameObject root{"Root"};
+
+    EXPECT_THROW(root.AddChild(nullptr), std::invalid_argument);
+
+    EXPECT_EQ(root.ChildCount(), 0);
 }
