@@ -50,3 +50,15 @@ TEST(ObjectOwnershipTest, RejectsNullChild) {
 
     EXPECT_EQ(root.ChildCount(), 0);
 }
+
+TEST(ObjectOwnershipTest, SupportsConstTraversal) {
+    GameObject::GameObject root{"Root"};
+
+    root.AddChild(std::make_unique<GameObject::GameObject>("Player"));
+
+    const GameObject::GameObject &const_root = root;
+    const GameObject::GameObject &child = const_root.ChildAt(0);
+
+    EXPECT_EQ(child.Name(), "Player");
+    EXPECT_EQ(child.Parent(), &root);
+}
