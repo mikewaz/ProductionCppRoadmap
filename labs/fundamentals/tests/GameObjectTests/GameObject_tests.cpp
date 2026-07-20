@@ -1,0 +1,24 @@
+﻿//
+// Created by marks on 20.07.2026.
+//
+
+#include <gtest/gtest.h>
+#include "labs/fundamentals/object_ownership/GameObject.h"
+
+namespace GameObject = production_cpp::object_ownership;
+
+TEST(GameObject, ParentOwnsAddedChild){
+    GameObject::GameObject root{"root"};
+
+    auto child = std::make_unique<GameObject::GameObject>("child");
+    auto child_address = child.get();
+    GameObject::GameObject& added_child = root.AddChild(std::move(child));
+
+    EXPECT_EQ(child, nullptr);
+
+    EXPECT_EQ(root.ChildCount(), 1);
+    EXPECT_EQ(&added_child, child_address);
+
+    EXPECT_EQ(added_child.Name(), "child");
+    EXPECT_EQ(added_child.Parent(), &root);
+}
