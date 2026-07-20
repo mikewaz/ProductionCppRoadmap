@@ -23,7 +23,7 @@ namespace production_cpp::object_ownership {
 
         GameObject &operator=(GameObject &&) = delete;
 
-        virtual ~GameObject() = default;
+        ~GameObject() = default;
 
         GameObject &AddChild(std::unique_ptr<GameObject> child);
 

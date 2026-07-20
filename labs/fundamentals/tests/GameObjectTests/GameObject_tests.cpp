@@ -5,14 +5,14 @@
 #include <gtest/gtest.h>
 #include "labs/fundamentals/object_ownership/GameObject.h"
 
-namespace GameObject = production_cpp::object_ownership;
+using GameObject = production_cpp::object_ownership::GameObject;
 
 TEST(GameObject, ParentOwnsAddedChild) {
-    GameObject::GameObject root{"root"};
+    GameObject root{"root"};
 
-    auto child = std::make_unique<GameObject::GameObject>("child");
+    auto child = std::make_unique<GameObject>("child");
     auto child_address = child.get();
-    GameObject::GameObject &added_child = root.AddChild(std::move(child));
+    GameObject &added_child = root.AddChild(std::move(child));
 
     EXPECT_EQ(child, nullptr);
 
@@ -24,14 +24,14 @@ TEST(GameObject, ParentOwnsAddedChild) {
 }
 
 TEST(ObjectOwnershipTest, BuildsObjectHierarchy) {
-    GameObject::GameObject root{"Root"};
+    GameObject root{"Root"};
 
-    GameObject::GameObject &player = root.AddChild(
-            std::make_unique<GameObject::GameObject>("Player")
+    GameObject &player = root.AddChild(
+            std::make_unique<GameObject>("Player")
     );
 
-    GameObject::GameObject &weapon = player.AddChild(
-            std::make_unique<GameObject::GameObject>("Weapon")
+    GameObject &weapon = player.AddChild(
+            std::make_unique<GameObject>("Weapon")
     );
 
     EXPECT_EQ(root.ChildCount(), 1);
@@ -44,7 +44,7 @@ TEST(ObjectOwnershipTest, BuildsObjectHierarchy) {
 }
 
 TEST(ObjectOwnershipTest, RejectsNullChild) {
-    GameObject::GameObject root{"Root"};
+    GameObject root{"Root"};
 
     EXPECT_THROW(root.AddChild(nullptr), std::invalid_argument);
 
@@ -52,12 +52,12 @@ TEST(ObjectOwnershipTest, RejectsNullChild) {
 }
 
 TEST(ObjectOwnershipTest, SupportsConstTraversal) {
-    GameObject::GameObject root{"Root"};
+    GameObject root{"Root"};
 
-    root.AddChild(std::make_unique<GameObject::GameObject>("Player"));
+    root.AddChild(std::make_unique<GameObject>("Player"));
 
-    const GameObject::GameObject &const_root = root;
-    const GameObject::GameObject &child = const_root.ChildAt(0);
+    const GameObject &const_root = root;
+    const GameObject &child = const_root.ChildAt(0);
 
     EXPECT_EQ(child.Name(), "Player");
     EXPECT_EQ(child.Parent(), &root);

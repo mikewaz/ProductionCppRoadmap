@@ -2,7 +2,7 @@
 - [x] implicit conversion & copy initialization
 - [x] RAII Wrapper Over a Resource
 - [x] Rule of Zero & Rule of Five
-- [ ] Object Ownership
+- [x] Object Ownership
 - [ ] Lifetime Errors
 - [ ] Iterator Invalidation
 - [ ] Passing Parameters

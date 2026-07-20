@@ -2,24 +2,25 @@
 // Created by marks on 20.07.2026.
 //
 
-#include <iostream>
+#include <stdexcept>
+#include <utility>
 #include "GameObject.h"
 
 namespace production_cpp::object_ownership {
     GameObject::GameObject(std::string name)
-        : name_(std::move(name))
-    { }
+            : name_(std::move(name)) {}
 
 
     GameObject &GameObject::AddChild(std::unique_ptr<GameObject> child) {
         if (child == nullptr)
-            throw std::invalid_argument("child is nullptr");
+            throw std::invalid_argument{"Child cannot be null"};
 
-        auto c = child.get();
-        child->parent_ = this;
         children_.push_back(std::move(child));
 
-        return *c;
+        GameObject &added_child = *children_.back();
+        added_child.parent_ = this;
+
+        return added_child;
     }
 
 
@@ -33,7 +34,7 @@ namespace production_cpp::object_ownership {
 
     std::size_t GameObject::ChildCount() const noexcept { return children_.size(); }
 
-    GameObject &GameObject::ChildAt(std::size_t index) { return *children_[index]; }
+    GameObject &GameObject::ChildAt(std::size_t index) { return *children_.at(index); }
 
-    const GameObject &GameObject::ChildAt(std::size_t index) const { return *children_[index]; }
+    const GameObject &GameObject::ChildAt(std::size_t index) const { return *children_.at(index); }
 }
