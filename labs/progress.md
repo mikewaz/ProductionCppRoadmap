@@ -1,7 +1,7 @@
 ﻿- [x] Lifetime of Local Objects
 - [x] implicit conversion & copy initialization
 - [x] RAII Wrapper Over a Resource
-- [ ] Rule of Zero & Rule of Five
+- [x] Rule of Zero & Rule of Five
 - [ ] Object Ownership
 - [ ] Lifetime Errors
 - [ ] Iterator Invalidation

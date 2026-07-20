@@ -16,6 +16,12 @@ if (BUILD_TESTING)
             RaiiWrapperOverResource/FileHandle.cpp
             RaiiWrapperOverResource/FileHandle.h
             tests/RaiiWrapperOverResourceTests/FileHandleTests.cpp
+            Rule_of_Zero_or_Rule_of_Five/ManualIntArray.cpp
+            Rule_of_Zero_or_Rule_of_Five/ManualIntArray.h
+            tests/Rule_of_Zero_or_Rule_of_Five_tests/ManualIntArray_tests.cpp
+            Rule_of_Zero_or_Rule_of_Five/IntArray.cpp
+            Rule_of_Zero_or_Rule_of_Five/IntArray.h
+            tests/Rule_of_Zero_or_Rule_of_Five_tests/rule_of_zero_tests.cpp
     )
 
     add_custom_command(TARGET roadmap_fundamentals POST_BUILD
