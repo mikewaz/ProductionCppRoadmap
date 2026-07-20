@@ -24,6 +24,7 @@ if (BUILD_TESTING)
             tests/Rule_of_Zero_or_Rule_of_Five_tests/rule_of_zero_tests.cpp
             object_ownership/GameObject.cpp
             object_ownership/GameObject.h
+            tests/GameObjectTests/GameObject_tests.cpp
     )
 
     add_custom_command(TARGET roadmap_fundamentals POST_BUILD
