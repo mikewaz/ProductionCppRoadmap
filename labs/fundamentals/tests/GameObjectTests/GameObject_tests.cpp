@@ -22,3 +22,27 @@ TEST(GameObject, ParentOwnsAddedChild){
     EXPECT_EQ(added_child.Name(), "child");
     EXPECT_EQ(added_child.Parent(), &root);
 }
+
+TEST(ObjectOwnershipTest, BuildsObjectHierarchy)
+{
+    GameObject::GameObject root{"Root"};
+
+    GameObject::GameObject& player = root.AddChild(
+            std::make_unique<GameObject::GameObject>("Player")
+    );
+
+    GameObject::GameObject& weapon = player.AddChild(
+            std::make_unique<GameObject::GameObject>("Weapon")
+    );
+
+    EXPECT_EQ(root.ChildCount(), 1u);
+    EXPECT_EQ(player.ChildCount(), 1u);
+
+    EXPECT_EQ(player.Parent(), &root);
+    EXPECT_EQ(weapon.Parent(), &player);
+
+    EXPECT_EQ(
+            root.ChildAt(0).ChildAt(0).Name(),
+            "Weapon"
+    );
+}
